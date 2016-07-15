@@ -6,8 +6,27 @@ Installs the OpenOffice productivity suite.
 
 ## <a name="usage"></a> Usage
 
+Centos/rhel/fedora:
+Set `node[openoffice][install_method]` to `package` or `rpms` depending on your distribution.
+
 Simply include `recipe[openoffice::headless]` to install OpenOffice headlessly
 and include `recipe[openoffice::apps]` to install the OpenOffice application components.
+
+Init scripts - choose the appropriate template depending on your executable:
+
+Libreoffice
+```
+template "/etc/init.d/libreoffice-server-headless-lsb-initscript" do
+  source "libreoffice-server-headless-lsb-initscript.erb"
+end
+```
+
+Openoffice.org
+```
+template "/etc/init.d/ooo-headless-init" do
+  source "ooo-headless-init.erb"
+end
+```
 
 ## <a name="requirements"></a> Requirements
 
@@ -22,6 +41,8 @@ The following platforms have been tested with this cookbook, meaning that the
 recipes run on these platforms without error:
 
 * ubuntu
+* fedora
+* centos
 
 Please [report][issues] any additional platforms so they can be added.
 
@@ -105,7 +126,7 @@ This recipe is a no-op and does nothing.
 
 ### <a name="recipes-headless"></a> headless
 
-Installs the headless (no X) core of OpenOffice.
+Installs the headless (no X) core of OpenOffice. Optionally provides init scripts.
 
 ### <a name="recipes-apps"></a> apps
 
