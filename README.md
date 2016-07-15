@@ -18,6 +18,7 @@ Libreoffice
 ```
 template "/etc/init.d/libreoffice-server-headless-lsb-initscript" do
   source "libreoffice-server-headless-lsb-initscript.erb"
+  cookbook "openoffice"
 end
 ```
 
@@ -25,6 +26,7 @@ Openoffice.org
 ```
 template "/etc/init.d/ooo-headless-init" do
   source "ooo-headless-init.erb"
+  cookbook "openoffice"
 end
 ```
 
